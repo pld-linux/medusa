@@ -7,6 +7,7 @@ Release:	8
 License:	GPL
 Group:		Libraries
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/medusa/0.5/%{name}-%{version}.tar.bz2
+# Source0-md5:	5f0b6ca0db367eda482760c922051e62
 Patch0:		%{name}-includes.patch
 Patch1:		%{name}-missing_AM_PATH_GNOME.patch
 Patch2:		%{name}-no_db1_ac_fix.patch
