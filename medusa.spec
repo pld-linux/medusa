@@ -61,7 +61,7 @@ Biblioteki statyczne medusy.
 %setup -q
 
 %build
-%configure \
+%configure2_13 \
 	--with-proc-interrupts \
 	--enable-static \
 	--with-mit-ext \
@@ -78,36 +78,36 @@ rm -rf $RPM_BUILD_ROOT
 	medusacronconfdir=/etc/cron.daily \
 	medusaidledconfdir=/etc/profile.d
 
-gzip -9nf AUTHORS NEWS README
+gzip -9nf AUTHORS NEWS README index-configuration/medusa-init
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
-%{_sysconfdir}/vfs/modules/*
-%dir %{_sysconfdir}/medusa
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/medusa/*
-%attr(755,root,root) %{_bindir}/medusa-e*
+%attr(755,root,root) /etc/profile.d/*
+%attr(755,root,root) /etc/cron.daily/*
+%dir %{_sysconfdir}/medusa
+%{_sysconfdir}/vfs/modules/*
+#%attr(755,root,root) %{_bindir}/medusa-e*
 %attr(755,root,root) %{_bindir}/medusa-i*
 %attr(755,root,root) %{_bindir}/medusa-s*
 %attr(755,root,root) %{_bindir}/msearch
 %attr(755,root,root) %{_sbindir}/*
 %attr(755,root,root) %{_libdir}/vfs/modules/*.so
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%{_prefix}/com/medusa
+#%{_prefix}/com/medusa
 %dir %{_var}/medusa
-%attr(755,root,root) /etc/profile.d/*
-%attr(755,root,root) /etc/cron.daily/*
 %{_mandir}/man*/*
+%doc *.gz index-configuration/*.gz
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/medusa-config
 %attr(755,root,root) %{_libdir}/lib*.la
 %attr(755,root,root) %{_libdir}/lib*.so
-%{_includedir}/libmedusa
+%{_includedir}/libmedusa/*.h
 
 %files static
 %defattr(644,root,root,755)
