@@ -3,10 +3,10 @@ Summary(pl):	Medusa - do szybkiego wyszukiwania plików
 Summary(pt_BR):	Medusa: procura e indexação de pacotes para uso com o Nautilus
 Name:		medusa
 Version:	0.5.1
-Release:	7
+Release:	8
 License:	GPL
 Group:		Libraries
-Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/medusa/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/medusa/0.5/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-includes.patch
 Patch1:		%{name}-missing_AM_PATH_GNOME.patch
 Patch2:		%{name}-no_db1_ac_fix.patch
@@ -25,6 +25,7 @@ Obsoletes:	libmedusa0
 %define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
 %define		_sysconfdir	/etc/X11/GNOME
+%define		_localstatedir	/var/lib
 
 %description
 Medusa is software that allows you to quickly search your system for
@@ -108,8 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_sbindir}/*
 %attr(755,root,root) %{_libdir}/vfs/modules/*.so
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-#%{_prefix}/com/medusa
-%dir %{_var}/medusa
+%dir %{_localstatedir}/medusa
 %{_mandir}/man*/*
 
 %files devel
