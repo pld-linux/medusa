@@ -1,5 +1,7 @@
 Summary:	Medusa - for quickly search files
+Summary(es):	Medusa, the search and indexing package for use with Eazel's Nautilus
 Summary(pl):	Medusa - do szybkiego wyszukiwania plików
+Summary(pt_BR):	Medusa: procura e indexação de pacotes para uso com o Nautilus
 Name:		medusa
 Version:	0.5.1
 Release:	1
@@ -107,7 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/medusa-config
 %attr(755,root,root) %{_libdir}/lib*.la
 %attr(755,root,root) %{_libdir}/lib*.so
-%dir %{_includedir}/libmedusa/*.h
+%dir %{_includedir}/libmedusa
 
 %files static
 %defattr(644,root,root,755)
