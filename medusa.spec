@@ -15,7 +15,7 @@ Patch1:		%{name}-locale-names.patch
 BuildRequires:	GConf2-devel >= 2.0.0
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gnome-common
+BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gnome-vfs2-devel >= 2.0.0
 BuildRequires:	intltool >= 0.28
 BuildRequires:	libglade2-devel >= 2.0.1
@@ -74,7 +74,7 @@ cp /usr/share/automake/mkinstalldirs .
 glib-gettextize --copy --force
 %{__libtoolize}
 intltoolize --copy --force
-%{__aclocal} -I %{_aclocaldir}/gnome2-macros
+%{__aclocal}
 %{__autoheader}
 %{__autoconf}
 %{__automake}
