@@ -14,6 +14,7 @@ Group(pt_BR):	Bibliotecas
 Group(ru):	Библиотеки
 Group(uk):	Б╕бл╕отеки
 Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/medusa/%{name}-%{version}.tar.bz2
+Patch0:		%{name}-includes.patch
 BuildRequires:	GConf-devel
 BuildRequires:	glib-devel >= 1.2.0
 BuildRequires:	gnome-vfs-devel >= 0.4
@@ -72,6 +73,7 @@ Biblioteki statyczne medusy.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure2_13 \
