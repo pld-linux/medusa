@@ -71,7 +71,7 @@ rm -f missing
 libtoolize -c -f
 aclocal -I %{_aclocaldir}/gnome
 autoconf
-automake -a -c
+automake -a -c -f
 %configure \
 	--with-proc-interrupts \
 	--enable-static \
