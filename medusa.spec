@@ -69,7 +69,7 @@ Biblioteki statyczne medusy.
 %build
 rm -f missing
 libtoolize -c -f
-aclocal -I %{_aclocaldir}/gnome
+%{__aclocal} -I %{_aclocaldir}/gnome
 %{__autoconf}
 %{__automake}
 %configure \
