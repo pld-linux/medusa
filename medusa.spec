@@ -68,7 +68,7 @@ Biblioteki statyczne medusy.
 
 %build
 rm -f missing
-libtoolize -c -f
+%{__libtoolize}
 %{__aclocal} -I %{_aclocaldir}/gnome
 %{__autoconf}
 %{__automake}
@@ -89,6 +89,8 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	medusacronconfdir=/etc/cron.daily \
 	medusaidledconfdir=/etc/profile.d
+
+rm -f $RPM_BUILD_ROOT%{_libdir}/vfs/modules/*.a
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -114,11 +116,10 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/medusa-config
-%{_libdir}/lib*.la
 %attr(755,root,root) %{_libdir}/lib*.so
+%{_libdir}/lib*.la
 %{_includedir}/libmedusa
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
-%{_libdir}/vfs/modules/*.a
