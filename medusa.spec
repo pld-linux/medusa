@@ -3,7 +3,7 @@ Summary(pl):	Medusa - do szybkiego wyszukiwania plików
 Summary(pt_BR):	Medusa: procura e indexação de pacotes para uso com o Nautilus
 Name:		medusa
 Version:	0.5.1
-Release:	6
+Release:	7
 License:	GPL
 Group:		Libraries
 Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/medusa/%{name}-%{version}.tar.bz2
@@ -97,6 +97,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc AUTHORS NEWS README index-configuration/medusa-init
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/medusa/*
 %attr(755,root,root) /etc/profile.d/*
 %attr(755,root,root) /etc/cron.daily/*
@@ -112,7 +113,6 @@ rm -rf $RPM_BUILD_ROOT
 #%{_prefix}/com/medusa
 %dir %{_var}/medusa
 %{_mandir}/man*/*
-%doc *.gz index-configuration/*.gz
 
 %files devel
 %defattr(644,root,root,755)
