@@ -3,7 +3,7 @@ Summary(pl):	Medusa - do szybkiego wyszukiwania plikСw
 Summary(pt_BR):	Medusa: procura e indexaГЦo de pacotes para uso com o Nautilus
 Name:		medusa
 Version:	0.5.1
-Release:	2
+Release:	3
 License:	GPL
 Group:		Libraries
 Group(de):	Libraries
@@ -62,7 +62,7 @@ Group(pl):	Programowanie/Biblioteki
 Group(pt_BR):	Desenvolvimento/Bibliotecas
 Group(ru):	Разработка/Библиотеки
 Group(uk):	Розробка/Б╕бл╕отеки
-Requires:	%{name} = %{version}
+Requires:	%{name}-devel = %{version}
 
 %description static
 Medusa static libraries.
