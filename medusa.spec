@@ -3,27 +3,40 @@ Summary(pl):	Medusa - do szybkiego wyszukiwania plików
 Summary(pt_BR):	Medusa: procura e indexação de pacotes para uso com o Nautilus
 Name:		medusa
 Version:	0.5.1
-Release:	5
+Release:	6
 License:	GPL
 Group:		Libraries
-Group(de):	Libraries
+Group(cs):	Knihovny
+Group(da):	Biblioteker
+Group(de):	Bibliotheken
 Group(es):	Bibliotecas
 Group(fr):	Librairies
+Group(is):	Ağgerğasöfn
+Group(it):	Librerie
+Group(ja):	¥é¥¤¥Ö¥é¥ê
+Group(no):	Biblioteker
 Group(pl):	Biblioteki
+Group(pt):	Bibliotecas
 Group(pt_BR):	Bibliotecas
 Group(ru):	âÉÂÌÉÏÔÅËÉ
+Group(sl):	Knji¾nice
+Group(sv):	Bibliotek
 Group(uk):	â¦ÂÌ¦ÏÔÅËÉ
 Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/medusa/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-includes.patch
+Patch1:		%{name}-missing_AM_PATH_GNOME.patch
+Patch2:		%{name}-no_db1_ac_fix.patch
+Patch3:		%{name}-am_fix.patch
+BuildRequires:	GConf-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	libtool
-BuildRequires:	GConf-devel
+BuildRequires:	db3-devel
 BuildRequires:	glib-devel >= 1.2.0
-BuildRequires:	gnome-vfs-devel >= 1.0.0
 BuildRequires:	gnome-libs-devel >= 1.0.0
-BuildRequires:	db1-devel
+BuildRequires:	gnome-vfs-devel >= 1.0.0
+BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	libmedusa0
 
 %define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
@@ -41,54 +54,76 @@ typy plików w twoim systemie u¿ywaj±c indeksu.
 Summary:	medusa - header files
 Summary(pl):	medusa - pliki nag³ówkowe
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
+Group(cs):	Vıvojové prostøedky/Knihovny
+Group(da):	Udvikling/Biblioteker
+Group(de):	Entwicklung/Bibliotheken
 Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
+Group(is):	Şróunartól/Ağgerğasöfn
+Group(it):	Sviluppo/Librerie
+Group(ja):	³«È¯/¥é¥¤¥Ö¥é¥ê
+Group(no):	Utvikling/Bibliotek
 Group(pl):	Programowanie/Biblioteki
 Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(pt):	Desenvolvimento/Bibliotecas
 Group(ru):	òÁÚÒÁÂÏÔËÁ/âÉÂÌÉÏÔÅËÉ
+Group(sl):	Razvoj/Knji¾nice
+Group(sv):	Utveckling/Bibliotek
 Group(uk):	òÏÚÒÏÂËÁ/â¦ÂÌ¦ÏÔÅËÉ
 Requires:	%{name} = %{version}
+Obsoletes:	libmedusa0-devel
 
 %description devel
 Package contains medusa header files.
 
-%description -l pl devel
+%description devel -l pl
 Pakiet zawiera pliki nag³ówkowe dla medusy.
 
 %package static
 Summary:	Medusa static libraries
 Summary(pl):	Biblioteki statyczne medusy
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
+Group(cs):	Vıvojové prostøedky/Knihovny
+Group(da):	Udvikling/Biblioteker
+Group(de):	Entwicklung/Bibliotheken
 Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
+Group(is):	Şróunartól/Ağgerğasöfn
+Group(it):	Sviluppo/Librerie
+Group(ja):	³«È¯/¥é¥¤¥Ö¥é¥ê
+Group(no):	Utvikling/Bibliotek
 Group(pl):	Programowanie/Biblioteki
 Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(pt):	Desenvolvimento/Bibliotecas
 Group(ru):	òÁÚÒÁÂÏÔËÁ/âÉÂÌÉÏÔÅËÉ
+Group(sl):	Razvoj/Knji¾nice
+Group(sv):	Utveckling/Bibliotek
 Group(uk):	òÏÚÒÏÂËÁ/â¦ÂÌ¦ÏÔÅËÉ
 Requires:	%{name}-devel = %{version}
 
 %description static
 Medusa static libraries.
 
-%description -l pl static
+%description static -l pl
 Biblioteki statyczne medusy.
 
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
-#rm -f missing
-cp -f /usr/share/automake/config.* .
-#libtoolize -c -f
-#aclocal
-#autoconf
-#automake -a -c
-%configure2_13 \
+rm -f missing
+libtoolize -c -f
+aclocal -I %{_aclocaldir}/gnome
+autoconf
+automake -a -c
+%configure \
 	--with-proc-interrupts \
 	--enable-static \
+	--disable-prefer-db1 \
 	--with-mit-ext \
 	--with-xidle-ext \
 	--with-sgivc-ext
