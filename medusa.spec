@@ -90,8 +90,6 @@ rm -rf $RPM_BUILD_ROOT
 	medusacronconfdir=/etc/cron.daily \
 	medusaidledconfdir=/etc/profile.d
 
-gzip -9nf AUTHORS NEWS README index-configuration/medusa-init
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
