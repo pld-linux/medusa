@@ -70,8 +70,8 @@ Biblioteki statyczne medusy.
 rm -f missing
 libtoolize -c -f
 aclocal -I %{_aclocaldir}/gnome
-autoconf
-automake -a -c -f
+%{__autoconf}
+%{__automake}
 %configure \
 	--with-proc-interrupts \
 	--enable-static \
