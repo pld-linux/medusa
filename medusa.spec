@@ -1,7 +1,7 @@
 Summary:	Medusa - for quickly search files
 Summary(pl):	Medusa - do szybkiego wyszukiwania plików
 Name:		medusa
-Version:	0.2
+Version:	0.2.2
 Release:	1
 License:	GPL
 Group:		Libraries
@@ -9,13 +9,15 @@ Group(de):	Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/medusa/%{name}-%{version}.tar.gz
-BuildRequires:	glib-devel
-BuildRequires:	oaf-devel
 BuildRequires:	GConf-devel
-Requires:	gnome-vfs
+BuildRequires:	glib-devel
+BuildRequires:	gnome-vfs-devel >= 0.4
+BuildRequires:	gnome-libs-devel
+BuildRequires:	oaf-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
+%define		_sysconfdir	/etc/X11/GNOME
 
 %description
 Medusa is software that allows you to quickly search your system for
@@ -70,8 +72,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install\
 	DESTDIR=$RPM_BUILD_ROOT
 
-strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/{lib*.so.*.*,vfs/modules/*.so}
-
 gzip -9nf AUTHORS NEWS README
 
 %clean
@@ -80,7 +80,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc *.gz
-%{_sysconfdir}/vfs
+%{_sysconfdir}/vfs/*
 %attr(755,root,root) %{_bindir}/medusa-indexd
 %attr(755,root,root) %{_bindir}/medusa-searchd
 %attr(755,root,root) %{_bindir}/msearch
@@ -95,6 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.la
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_includedir}/libmedusa
+%{_includedir}/libmedusa-index
 
 %files static
 %defattr(644,root,root,755)
