@@ -1,14 +1,14 @@
 Summary:	Medusa - for quickly search files
 Summary(pl):	Medusa - do szybkiego wyszukiwania plików
 Name:		medusa
-Version:	0.5.0
+Version:	0.5.1
 Release:	1
 License:	GPL
 Group:		Libraries
 Group(de):	Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
-Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/medusa/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/medusa/%{name}-%{version}.tar.bz2
 BuildRequires:	GConf-devel
 BuildRequires:	glib-devel >= 1.2.0
 BuildRequires:	gnome-vfs-devel >= 0.4
