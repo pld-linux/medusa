@@ -3,7 +3,7 @@ Summary(pl):	Medusa - do szybkiego wyszukiwania plików
 Summary(pt_BR):	Medusa: procura e indexação de pacotes para uso com o Nautilus
 Name:		medusa
 Version:	0.5.1
-Release:	4
+Release:	5
 License:	GPL
 Group:		Libraries
 Group(de):	Libraries
@@ -15,9 +15,13 @@ Group(ru):	âÉÂÌÉÏÔÅËÉ
 Group(uk):	â¦ÂÌ¦ÏÔÅËÉ
 Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/medusa/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-includes.patch
+Patch1:		%{name}-ac_am_fix.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool
 BuildRequires:	GConf-devel
 BuildRequires:	glib-devel >= 1.2.0
-BuildRequires:	gnome-vfs-devel >= 0.4
+BuildRequires:	gnome-vfs-devel >= 1.0.0
 BuildRequires:	gnome-libs-devel >= 1.0.0
 BuildRequires:	db1-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -75,8 +79,15 @@ Biblioteki statyczne medusy.
 %prep
 %setup -q
 %patch0 -p1
+#%patch1 -p1
 
 %build
+#rm -f missing
+cp -f /usr/share/automake/config.* .
+#libtoolize -c -f
+#aclocal
+#autoconf
+#automake -a -c
 %configure2_13 \
 	--with-proc-interrupts \
 	--enable-static \
@@ -89,7 +100,7 @@ Biblioteki statyczne medusy.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install\
+%{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	medusacronconfdir=/etc/cron.daily \
 	medusaidledconfdir=/etc/profile.d
