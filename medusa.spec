@@ -1,5 +1,4 @@
 Summary:	Medusa - for quickly search files
-Summary(es):	Medusa, the search and indexing package for use with Eazel's Nautilus
 Summary(pl):	Medusa - do szybkiego wyszukiwania plikСw
 Summary(pt_BR):	Medusa: procura e indexaГЦo de pacotes para uso com o Nautilus
 Name:		medusa
@@ -8,8 +7,12 @@ Release:	2
 License:	GPL
 Group:		Libraries
 Group(de):	Libraries
+Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
+Group(pt_BR):	Bibliotecas
+Group(ru):	Библиотеки
+Group(uk):	Б╕бл╕отеки
 Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/medusa/%{name}-%{version}.tar.bz2
 BuildRequires:	GConf-devel
 BuildRequires:	glib-devel >= 1.2.0
@@ -34,27 +37,35 @@ Summary:	medusa - header files
 Summary(pl):	medusa - pliki nagЁСwkowe
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Разработка/Библиотеки
+Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description devel
-Package contains header files.
+Package contains medusa header files.
 
 %description -l pl devel
-Pakiet zawiera pliki nagЁСwkowe.
+Pakiet zawiera pliki nagЁСwkowe dla medusy.
 
 %package static
-Summary:	Medusa staic libraries
+Summary:	Medusa static libraries
 Summary(pl):	Biblioteki statyczne medusy
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Разработка/Библиотеки
+Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description static
-Medusa staic libraries.
+Medusa static libraries.
 
 %description -l pl static
 Biblioteki statyczne medusy.
