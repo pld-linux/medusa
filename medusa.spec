@@ -107,7 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/medusa-config
 %attr(755,root,root) %{_libdir}/lib*.la
 %attr(755,root,root) %{_libdir}/lib*.so
-%{_includedir}/libmedusa/*.h
+%dir %{_includedir}/libmedusa/*.h
 
 %files static
 %defattr(644,root,root,755)
