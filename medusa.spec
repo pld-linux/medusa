@@ -5,8 +5,10 @@ Version:	0.2
 Release:	1
 License:	GPL
 Group:		Libraries
+Group(de):	Libraries
+Group(fr):	Librairies
 Group(pl):	Biblioteki
-Source0:	http://download.eazel.com/source/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/medusa/%{name}-%{version}.tar.gz
 BuildRequires:	glib-devel
 BuildRequires:	oaf-devel
 BuildRequires:	GConf-devel
@@ -20,37 +22,55 @@ Medusa is software that allows you to quickly search your system for
 particular types of files, using an index.
 
 %description -l pl
-Medusa jest oprogramowaniem pozwalaj±cym szybko znale¼æ odpowiednie 
+Medusa jest oprogramowaniem pozwalaj±cym szybko znale¼æ odpowiednie
 typy plików w twoim systemie u¿ywaj±c indeksu.
 
 %package devel
 Summary:	medusa - header files
 Summary(pl):	medusa - pliki nag³ówkowe
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
 %description devel
 Package contains header files.
 
-%description devel -l pl
+%description -l pl devel
 Pakiet zawiera pliki nag³ówkowe.
+
+%package static
+Summary:	Medusa staic libraries
+Summary(pl):	Biblioteki statyczne medusy
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
+
+%description static
+Medusa staic libraries.
+
+%description -l pl static
+Biblioteki statyczne medusy.
 
 %prep
 %setup -q
 
 %build
-LDFLAGS="-s"; export LDFLAGS
-%configure
+%configure \
+	--enable-static
 
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} \
-	DESTDIR=$RPM_BUILD_ROOT \
-	install
+%{__make} install\
+	DESTDIR=$RPM_BUILD_ROOT
+
+strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/{lib*.so.*.*,vfs/modules/*.so}
 
 gzip -9nf AUTHORS NEWS README
 
@@ -64,13 +84,19 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/medusa-indexd
 %attr(755,root,root) %{_bindir}/medusa-searchd
 %attr(755,root,root) %{_bindir}/msearch
-%attr(755,root,root) %{_libdir}/vfs/modules/*
+%attr(755,root,root) %{_libdir}/vfs/modules/*.so
+%attr(755,root,root) %{_libdir}/vfs/modules/*.la
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_datadir}/medusa
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/medusa-config
+%attr(755,root,root) %{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/lib*.so
 %{_includedir}/libmedusa
-%attr(755,root,root) %{_libdir}/*.la
-%{_libdir}/*.so
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/lib*.a
+%{_libdir}/vfs/modules/*.a
