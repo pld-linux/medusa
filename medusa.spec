@@ -15,7 +15,6 @@ Group(ru):	Библиотеки
 Group(uk):	Б╕бл╕отеки
 Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/medusa/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-includes.patch
-Patch1:		%{name}-ac_am_fix.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
@@ -79,7 +78,6 @@ Biblioteki statyczne medusy.
 %prep
 %setup -q
 %patch0 -p1
-#%patch1 -p1
 
 %build
 #rm -f missing
