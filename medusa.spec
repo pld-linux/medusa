@@ -1,7 +1,7 @@
 Summary:	Medusa - for quickly search files
 Summary(pl):	Medusa - do szybkiego wyszukiwania plików
 Name:		medusa
-Version:	0.2.2
+Version:	0.5.0
 Release:	1
 License:	GPL
 Group:		Libraries
@@ -10,10 +10,10 @@ Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/medusa/%{name}-%{version}.tar.gz
 BuildRequires:	GConf-devel
-BuildRequires:	glib-devel
+BuildRequires:	glib-devel >= 1.2.0
 BuildRequires:	gnome-vfs-devel >= 0.4
-BuildRequires:	gnome-libs-devel
-BuildRequires:	oaf-devel
+BuildRequires:	gnome-libs-devel >= 1.0.0
+BuildRequires:	db1-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -62,7 +62,11 @@ Biblioteki statyczne medusy.
 
 %build
 %configure \
-	--enable-static
+	--with-proc-interrupts \
+	--enable-static \
+	--with-mit-ext \
+	--with-xidle-ext \
+	--with-sgivc-ext
 
 %{__make}
 
@@ -72,6 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install\
 	DESTDIR=$RPM_BUILD_ROOT
 
+mv $RPM_BUILD_ROOT%{_sysconfdir}/cron.daily	$RPM_BUILD_ROOT/etc
+mv $RPM_BUILD_ROOT%{_sysconfdir}/profile.d	$RPM_BUILD_ROOT/etc
+
 gzip -9nf AUTHORS NEWS README
 
 %clean
@@ -80,14 +87,22 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc *.gz
-%{_sysconfdir}/vfs/*
-%attr(755,root,root) %{_bindir}/medusa-indexd
-%attr(755,root,root) %{_bindir}/medusa-searchd
+%{_sysconfdir}/vfs/modules/*
+%dir %{_sysconfdir}/medusa
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/medusa/*
+%attr(755,root,root) %{_bindir}/medusa-e*
+%attr(755,root,root) %{_bindir}/medusa-i*
+%attr(755,root,root) %{_bindir}/medusa-s*
 %attr(755,root,root) %{_bindir}/msearch
+%attr(755,root,root) %{_sbindir}/*
 %attr(755,root,root) %{_libdir}/vfs/modules/*.so
 %attr(755,root,root) %{_libdir}/vfs/modules/*.la
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%{_datadir}/medusa
+%{_prefix}/com/medusa
+%dir %{_var}/medusa
+%attr(755,root,root) /etc/profile.d/*
+%attr(755,root,root) /etc/cron.daily/*
+%{_mandir}/man*/*
 
 %files devel
 %defattr(644,root,root,755)
@@ -95,7 +110,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.la
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_includedir}/libmedusa
-%{_includedir}/libmedusa-index
 
 %files static
 %defattr(644,root,root,755)
