@@ -3,7 +3,7 @@ Summary(pl):	Medusa - do szybkiego wyszukiwania plików
 Summary(pt_BR):	Medusa: procura e indexação de pacotes para uso com o Nautilus
 Name:		medusa
 Version:	0.5.1
-Release:	3
+Release:	4
 License:	GPL
 Group:		Libraries
 Group(de):	Libraries
@@ -23,6 +23,7 @@ BuildRequires:	db1-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
+%define		_mandir		%{_prefix}/man
 %define		_sysconfdir	/etc/X11/GNOME
 
 %description
