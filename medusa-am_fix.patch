@@ -1,0 +1,11 @@
+--- medusa-0.5.1/gnome-vfs-module/Makefile.am~	Sun Feb 17 01:53:00 2002
++++ medusa-0.5.1/gnome-vfs-module/Makefile.am	Sun Feb 17 01:53:00 2002
+@@ -18,7 +18,7 @@
+ 	$(NULL)
+ 
+ libvfs_search_la_LIBADD = \
+-	-L$(top_builddir)/libmedusa/.libs -lmedusa \
++	$(top_builddir)/libmedusa/libmedusa.la \
+ 	$(VFS_LIBS) \
+ 	$(GLIB_LIBS) \
+ 	$(NULL)
