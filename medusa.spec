@@ -6,22 +6,6 @@ Version:	0.5.1
 Release:	6
 License:	GPL
 Group:		Libraries
-Group(cs):	Knihovny
-Group(da):	Biblioteker
-Group(de):	Bibliotheken
-Group(es):	Bibliotecas
-Group(fr):	Librairies
-Group(is):	Ağgerğasöfn
-Group(it):	Librerie
-Group(ja):	¥é¥¤¥Ö¥é¥ê
-Group(no):	Biblioteker
-Group(pl):	Biblioteki
-Group(pt):	Bibliotecas
-Group(pt_BR):	Bibliotecas
-Group(ru):	âÉÂÌÉÏÔÅËÉ
-Group(sl):	Knji¾nice
-Group(sv):	Bibliotek
-Group(uk):	â¦ÂÌ¦ÏÔÅËÉ
 Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/medusa/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-includes.patch
 Patch1:		%{name}-missing_AM_PATH_GNOME.patch
@@ -54,22 +38,6 @@ typy plików w twoim systemie u¿ywaj±c indeksu.
 Summary:	medusa - header files
 Summary(pl):	medusa - pliki nag³ówkowe
 Group:		Development/Libraries
-Group(cs):	Vıvojové prostøedky/Knihovny
-Group(da):	Udvikling/Biblioteker
-Group(de):	Entwicklung/Bibliotheken
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(is):	Şróunartól/Ağgerğasöfn
-Group(it):	Sviluppo/Librerie
-Group(ja):	³«È¯/¥é¥¤¥Ö¥é¥ê
-Group(no):	Utvikling/Bibliotek
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(pt):	Desenvolvimento/Bibliotecas
-Group(ru):	òÁÚÒÁÂÏÔËÁ/âÉÂÌÉÏÔÅËÉ
-Group(sl):	Razvoj/Knji¾nice
-Group(sv):	Utveckling/Bibliotek
-Group(uk):	òÏÚÒÏÂËÁ/â¦ÂÌ¦ÏÔÅËÉ
 Requires:	%{name} = %{version}
 Obsoletes:	libmedusa0-devel
 
@@ -83,22 +51,6 @@ Pakiet zawiera pliki nag³ówkowe dla medusy.
 Summary:	Medusa static libraries
 Summary(pl):	Biblioteki statyczne medusy
 Group:		Development/Libraries
-Group(cs):	Vıvojové prostøedky/Knihovny
-Group(da):	Udvikling/Biblioteker
-Group(de):	Entwicklung/Bibliotheken
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(is):	Şróunartól/Ağgerğasöfn
-Group(it):	Sviluppo/Librerie
-Group(ja):	³«È¯/¥é¥¤¥Ö¥é¥ê
-Group(no):	Utvikling/Bibliotek
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(pt):	Desenvolvimento/Bibliotecas
-Group(ru):	òÁÚÒÁÂÏÔËÁ/âÉÂÌÉÏÔÅËÉ
-Group(sl):	Razvoj/Knji¾nice
-Group(sv):	Utveckling/Bibliotek
-Group(uk):	òÏÚÒÏÂËÁ/â¦ÂÌ¦ÏÔÅËÉ
 Requires:	%{name}-devel = %{version}
 
 %description static
