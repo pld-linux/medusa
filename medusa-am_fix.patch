@@ -1,11 +1,16 @@
---- medusa-0.5.1/gnome-vfs-module/Makefile.am~	Sun Feb 17 01:53:00 2002
-+++ medusa-0.5.1/gnome-vfs-module/Makefile.am	Sun Feb 17 01:53:00 2002
-@@ -18,7 +18,7 @@
+diff -urN aa/medusa-0.6.1/gnome-vfs-module/Makefile.am medusa-0.6.1/gnome-vfs-module/Makefile.am
+--- aa/medusa-0.6.1/gnome-vfs-module/Makefile.am	2003-09-18 05:10:38.000000000 +0200
++++ medusa-0.6.1/gnome-vfs-module/Makefile.am	2004-02-28 16:05:18.721031744 +0100
+@@ -18,10 +18,8 @@
  	$(NULL)
  
  libvfs_search_la_LIBADD = \
--	-L$(top_builddir)/libmedusa/.libs -lmedusa \
-+	$(top_builddir)/libmedusa/libmedusa.la \
+-	-L$(top_builddir)/libmedusa \
+-	-lmedusa-2 \
+-	-L$(top_builddir)/libmedusa-internal \
+-	-lmedusa-index-2 \
++	$(top_builddir)/libmedusa/libmedusa-2.la \
++	$(top_builddir)/libmedusa-internal/libmedusa-index-2.la \
  	$(VFS_LIBS) \
  	$(GLIB_LIBS) \
  	$(NULL)
