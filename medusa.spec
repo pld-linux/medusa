@@ -74,10 +74,9 @@ Biblioteki statyczne medusy.
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install\
-	DESTDIR=$RPM_BUILD_ROOT
-
-mv $RPM_BUILD_ROOT%{_sysconfdir}/cron.daily	$RPM_BUILD_ROOT/etc
-mv $RPM_BUILD_ROOT%{_sysconfdir}/profile.d	$RPM_BUILD_ROOT/etc
+	DESTDIR=$RPM_BUILD_ROOT \
+	medusacronconfdir=/etc/cron.daily \
+	medusaidledconfdir=/etc/profile.d
 
 gzip -9nf AUTHORS NEWS README
 
@@ -96,7 +95,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/msearch
 %attr(755,root,root) %{_sbindir}/*
 %attr(755,root,root) %{_libdir}/vfs/modules/*.so
-%attr(755,root,root) %{_libdir}/vfs/modules/*.la
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_prefix}/com/medusa
 %dir %{_var}/medusa
