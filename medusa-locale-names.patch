@@ -1,0 +1,12 @@
+diff -urN aa/medusa-0.6.1/configure.in medusa-0.6.1/configure.in
+--- aa/medusa-0.6.1/configure.in	2004-02-25 14:24:21.000000000 +0100
++++ medusa-0.6.1/configure.in	2004-02-28 16:05:40.407734864 +0100
+@@ -348,7 +348,7 @@
+ AC_SUBST(GETTEXT_PACKAGE)
+ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE",[Gettext package])
+ 
+-ALL_LINGUAS="ca cs de el es hr no pt sr sr@Latn"
++ALL_LINGUAS="ca cs de el es hr nb pt sr sr@Latn"
+ AM_GLIB_GNU_GETTEXT
+ 
+ 
