@@ -1,7 +1,7 @@
 %define	snap	20040228
 Summary:	Medusa - for quickly search files
-Summary(pl):	Medusa - do szybkiego wyszukiwania plików
-Summary(pt_BR):	Medusa: procura e indexação de pacotes para uso com o Nautilus
+Summary(pl.UTF-8):   Medusa - do szybkiego wyszukiwania plikÃ³w
+Summary(pt_BR.UTF-8):   Medusa: procura e indexaÃ§Ã£o de pacotes para uso com o Nautilus
 Name:		medusa
 Version:	0.6.1
 Release:	0.%{snap}.1
@@ -32,13 +32,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Medusa is software that allows you to quickly search your system for
 particular types of files, using an index.
 
-%description -l pl
-Medusa jest oprogramowaniem pozwalaj±cym szybko znale¼æ odpowiednie
-typy plików w twoim systemie u¿ywaj±c indeksu.
+%description -l pl.UTF-8
+Medusa jest oprogramowaniem pozwalajÄ…cym szybko znaleÅºÄ‡ odpowiednie
+typy plikÃ³w w twoim systemie uÅ¼ywajÄ…c indeksu.
 
 %package devel
 Summary:	medusa - header files
-Summary(pl):	medusa - pliki nag³ówkowe
+Summary(pl.UTF-8):   medusa - pliki nagÅ‚Ã³wkowe
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	libmedusa0-devel
@@ -46,19 +46,19 @@ Obsoletes:	libmedusa0-devel
 %description devel
 Package contains medusa header files.
 
-%description devel -l pl
-Pakiet zawiera pliki nag³ówkowe dla medusy.
+%description devel -l pl.UTF-8
+Pakiet zawiera pliki nagÅ‚Ã³wkowe dla medusy.
 
 %package static
 Summary:	Medusa static libraries
-Summary(pl):	Biblioteki statyczne medusy
+Summary(pl.UTF-8):   Biblioteki statyczne medusy
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Medusa static libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteki statyczne medusy.
 
 %prep
