@@ -1,7 +1,7 @@
 %define	snap	20040228
 Summary:	Medusa - for quickly search files
-Summary(pl.UTF-8):   Medusa - do szybkiego wyszukiwania plików
-Summary(pt_BR.UTF-8):   Medusa: procura e indexação de pacotes para uso com o Nautilus
+Summary(pl.UTF-8):	Medusa - do szybkiego wyszukiwania plików
+Summary(pt_BR.UTF-8):	Medusa: procura e indexação de pacotes para uso com o Nautilus
 Name:		medusa
 Version:	0.6.1
 Release:	0.%{snap}.1
@@ -38,7 +38,7 @@ typy plików w twoim systemie używając indeksu.
 
 %package devel
 Summary:	medusa - header files
-Summary(pl.UTF-8):   medusa - pliki nagłówkowe
+Summary(pl.UTF-8):	medusa - pliki nagłówkowe
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	libmedusa0-devel
@@ -51,7 +51,7 @@ Pakiet zawiera pliki nagłówkowe dla medusy.
 
 %package static
 Summary:	Medusa static libraries
-Summary(pl.UTF-8):   Biblioteki statyczne medusy
+Summary(pl.UTF-8):	Biblioteki statyczne medusy
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
